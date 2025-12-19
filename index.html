@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Malaika — Birthday</title>
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-pink-50 text-gray-800 overflow-hidden">
+  <!-- BACKGROUND SHAPES (GLOBAL) -->
+  <div class="bg-shapes">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>    
+  <!-- LOCK SCREEN -->
+  <section id="lockScreen" class="screen active">
+    <div class="centered">
+      <h1 class="text-3xl font-semibold mb-2">Patient Status</h1>
+      <p id="lockText" class="opacity-80 mb-6">Locked</p>
+
+      <div id="countdown" class="text-2xl font-mono mb-6">
+        -- : -- : --
+      </div>
+      <button
+        id="musicToggle"
+        class="px-4 py-2 bg-pink-200 rounded-lg mt-4"
+        >
+        music
+        </button>
+      <button
+        id="enterBtn"
+        disabled
+        class="px-6 py-3 rounded-xl bg-gray-300 text-gray-600 cursor-not-allowed"
+      >
+        Enter
+      </button>
+    </div>
+  </section>
+
+  <!-- OBBY SCREEN -->
+  <section id="obbyScreen" class="screen hidden">
+    <div class="centered">
+      <p class="mb-3 opacity-80">one small task first</p>
+
+      <canvas id="gameCanvas" width="320" height="240"
+        class="border rounded-lg bg-white"></canvas>
+
+      <div class="mt-4 flex gap-2">
+        <button class="control-btn" data-dir="left">◀</button>
+        <button class="control-btn" data-dir="jump">▲</button>
+        <button class="control-btn" data-dir="right">▶</button>
+      </div>
+    </div>
+  </section>
+  
+<!-- DTI FIT CHECK SCREEN -->
+<section id="dtiScreen" class="screen hidden">
+  <div class="centered card dti-card">
+
+    <h2 class="text-2xl font-semibold mb-4">
+      fit check ✨
+    </h2>
+
+    <!-- DOLL AREA -->
+    <div class="doll-area mb-6">
+    <div id="doll" class="doll">
+  <div class="doll-head">
+    <span class="eye left"></span>
+    <span class="eye right"></span>
+    <span class="mouth"></span>
+  </div>
+
+  <div class="arm left"></div>
+  <div class="arm right"></div>
+
+  <div id="dollTop" class="doll-top"></div>
+
+  <div id="dollBottom" class="doll-bottom">
+    <div class="leg left"></div>
+    <div class="leg right"></div>
+  </div>
+</div>  
+    </div>
+
+    <!-- WARDROBE -->
+    <div class="wardrobe">
+
+      <!-- TOPS -->
+      <div class="shelf">
+        <p class="shelf-title">tops</p>
+        <div class="options">
+          <button class="option top-option" data-top="lab">🩺 lab coat</button>
+          <button class="option top-option" data-top="hoodie">💖 hoodie</button>
+          <button class="option top-option" data-top="jacket">✨ jacket</button>
+        </div>
+      </div>
+
+      <!-- BOTTOMS -->
+      <div class="shelf mt-4">
+        <p class="shelf-title">bottoms</p>
+        <div class="options">
+          <button class="option bottom-option" data-bottom="scrubs">🧼 scrubs</button>
+          <button class="option bottom-option" data-bottom="pants">🌸 pants</button>
+          <button class="option bottom-option" data-bottom="skirt">💫 skirt</button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RUNWAY BUTTON -->
+    <button
+      id="runwayBtn"
+      class="runway-btn mt-6 hidden"
+    >
+      runway 💃
+    </button>
+
+    <!-- JUDGING TEXT -->
+    <p id="judgingText" class="judging-text hidden">
+      judging outfit...
+    </p>
+
+  </div>
+</section>
+
+
+  <!-- MAIN BIRTHDAY SCREEN -->
+  <section id="mainScreen" class="screen hidden">
+    <div class="centered card">
+      <h1 class="text-4xl font-bold mb-16 relative z-10">
+        Happy Birthday, Malaika 🩺
+      </h1>
+
+      <!-- Cake -->
+      
+      <div class="cake-wrapper mb-6">
+        <div id="cake" class="cake">
+            <div class="candle"></div>
+            <div class="candle"></div>
+            <div class="candle"></div>
+        </div>
+      </div>
+
+      <p class="opacity-80 mb-6">
+        <!-- MESSAGE WILL LIVE HERE -->
+        you made it.
+      </p>
+
+      
+    </div>
+  </section>
+
+  <audio id="bgMusic" loop src="assets/music.mp3"></audio>
+  <audio id="robloxSound" src="assets/roblox-win.mp3"></audio>
+
+  <script src="main.js"></script>
+  <script src="obby.js"></script>
+
+  <!-- ROBLOX-STYLE DANCER -->
+<div id="robloxDancer" class="roblox-dancer hidden">
+  <div class="head"></div>
+  <div class="torso"></div>
+  <div class="arm left"></div>
+  <div class="arm right"></div>
+  <div class="leg left"></div>
+  <div class="leg right"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,516 @@
+/* ---------- GLOBAL ---------- */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.6s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.centered {
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* ---------- CONTROLS ---------- */
+.control-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #fbcfe8;
+  font-size: 1.2rem;
+  user-select: none;
+}
+/* ---------- HEADING SAFE ZONE ---------- */
+.card {
+  padding-top: 4.5rem; /* reserves space for candles */
+}
+
+.cake-wrapper {
+  margin-top: -10px; /* pulls cake up slightly, safely */
+}
+/* ---------- CAKE ---------- */
+.cake {
+  width: 160px;
+  height: 120px;
+  background: #fde68a;
+  border-radius: 0 0 24px 24px;
+  position: relative;
+  margin: 0 auto;
+  cursor: pointer;
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.cake::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: #f9a8d4;
+  border-radius: 24px 24px 0 0;
+}
+/* ---------- CAKE WRAPPER (ALIGNMENT FIX) ---------- */
+.cake-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px; /* reserves space for candles */
+}
+
+.card {
+  padding-top: 3.5rem; /* extra top breathing room */
+}
+.cake:hover {
+  transform: translateY(-4px);
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: sparkle 3s infinite ease-in-out;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(0.6); opacity: 0.4; }
+  50% { transform: scale(1); opacity: 0.8; }
+}
+
+/* ---------- CANDLES ---------- */
+.candle {
+  position: absolute;
+  top: -48px;
+  width: 10px;
+  height: 32px;
+  background: #60a5fa;
+  border-radius: 4px;
+}
+
+.candle:nth-child(1) { left: 40px; }
+.candle:nth-child(2) { left: 75px; }
+.candle:nth-child(3) { left: 110px; }
+
+.candle::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -3px;
+  width: 16px;
+  height: 16px;
+  background: orange;
+  border-radius: 50%;
+  animation: flicker 0.15s infinite alternate;
+}
+
+.cake.blown .candle::after {
+  display: none;
+}
+
+/* ---------- FLAME ---------- */
+@keyframes flicker {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(0.8); opacity: 0.6; }
+}
+
+/* ---------- BACKGROUND SHAPES ---------- */
+.bg-shapes {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bg-shapes span {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.35;
+  animation: float 18s infinite ease-in-out;
+}
+
+.bg-shapes span:nth-child(1) {
+  background: #fbcfe8;
+  top: 10%;
+  left: 15%;
+}
+
+.bg-shapes span:nth-child(2) {
+  background: #bae6fd;
+  top: 60%;
+  left: 65%;
+  animation-delay: -6s;
+}
+
+.bg-shapes span:nth-child(3) {
+  background: #fde68a;
+  top: 30%;
+  left: 75%;
+  animation-delay: -12s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-40px) translateX(20px);
+  }
+}
+
+/* ---------- MAIN CARD ---------- */
+.card {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border-radius: 28px;
+  padding: 3.5rem 2.5rem 3rem;   /* top | sides | bottom */
+  min-height: 420px;             /* forces breathing room */
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  max-width: 360px;
+}
+
+/* ---------- CONFETTI ---------- */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 8px;
+  height: 14px;
+  background: hsl(calc(360 * var(--h)), 80%, 70%);
+  animation: fall 3s linear forwards;
+}
+
+.confetti {
+  --h: 0.5;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+
+/* ---------- ROBLOX DANCER ---------- */
+.roblox-dancer {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 60px;
+  height: 120px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.roblox-dancer.hidden {
+  display: none;
+}
+
+/* BODY PARTS */
+.roblox-dancer .head {
+  width: 32px;
+  height: 32px;
+  background: #fde68a;
+  border-radius: 6px;
+  margin: 0 auto 4px;
+}
+
+.roblox-dancer .torso {
+  width: 36px;
+  height: 40px;
+  background: #60a5fa;
+  border-radius: 6px;
+  margin: 0 auto;
+}
+
+.roblox-dancer .arm {
+  width: 10px;
+  height: 36px;
+  background: #fbcfe8;
+  position: absolute;
+  top: 40px;
+  transform-origin: top center;
+}
+
+.roblox-dancer .arm.left {
+  left: 0;
+  animation: armSwing 0.6s infinite alternate;
+}
+
+.roblox-dancer .arm.right {
+  right: 0;
+  animation: armSwing 0.6s infinite alternate-reverse;
+}
+
+.roblox-dancer .leg {
+  width: 12px;
+  height: 36px;
+  background: #a7f3d0;
+  position: absolute;
+  top: 80px;
+  transform-origin: top center;
+}
+
+.roblox-dancer .leg.left {
+  left: 12px;
+  animation: legKick 0.6s infinite alternate;
+}
+
+.roblox-dancer .leg.right {
+  right: 12px;
+  animation: legKick 0.6s infinite alternate-reverse;
+}
+
+/* ---------- SILLY DANCE ---------- */
+@keyframes armSwing {
+  from { transform: rotate(20deg); }
+  to   { transform: rotate(-20deg); }
+}
+
+@keyframes legKick {
+  from { transform: rotate(-10deg); }
+  to   { transform: rotate(20deg); }
+}
+
+/* ---------- SOFT TRANSITIONS ---------- */
+#lockScreen,
+#obbyScreen,
+#mainScreen {
+  background: linear-gradient(135deg, #fce7f3, #ecfeff);
+}
+
+/* ---------- DTI DOLL (CONNECTED) ---------- */
+.doll-area {
+  display: flex;
+  justify-content: center;
+}
+
+.doll {
+  position: relative;
+  width: 120px;
+  height: 260px;
+  animation: idleBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes idleBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* HEAD */
+.doll-head {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.6);
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 68px;
+  background: #fde68a;
+  border-radius: 18px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+/* TOP */
+.doll-top {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.6);
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 78px;
+  background: #fbcfe8;
+  border-radius: 22px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+/* BOTTOM */
+.doll-bottom {
+  position: absolute;
+  border: 2px solid rgba(255,255,255,0.6);
+  top: 134px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 96px;
+  background: #bae6fd;
+  border-radius: 22px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+/* FACE */
+.doll-head {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 68px;
+  height: 68px;
+  background: #fde68a;
+  border-radius: 20px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+}
+
+.eye {
+  position: absolute;
+  top: 24px;
+  width: 6px;
+  height: 6px;
+  background: #374151;
+  border-radius: 50%;
+}
+
+.eye.left { left: 18px; }
+.eye.right { right: 18px; }
+
+.mouth {
+  position: absolute;
+  bottom: 18px;
+  left: 50%;
+  width: 14px;
+  height: 6px;
+  border-bottom: 2px solid #374151;
+  border-radius: 0 0 12px 12px;
+  transform: translateX(-50%);
+}
+
+/* ARMS */
+.arm {
+  position: absolute;
+  top: 88px;
+  width: 16px;
+  height: 52px;
+  background: #fde68a;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.arm.left {
+  left: 2px;
+  transform: rotate(8deg);
+}
+
+.arm.right {
+  right: 2px;
+  transform: rotate(-8deg);
+}
+
+.doll-top {
+  position: absolute;
+  top: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92px;
+  height: 78px;
+  border-radius: 22px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+/* LEGS */
+.doll-bottom {
+  position: absolute;
+  top: 134px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 96px;
+  border-radius: 22px;
+  border: 2px solid rgba(255,255,255,0.6);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.leg {
+  position: absolute;
+  bottom: -42px;
+  width: 18px;
+  height: 42px;
+  background: #fde68a;
+  border-radius: 12px;
+  border: 2px solid rgba(255,255,255,0.6);
+}
+
+.leg.left { left: 16px; }
+.leg.right { right: 16px; }
+
+/* ---------- TOP OPTIONS ---------- */
+.doll-top.lab {
+  background: linear-gradient(#ffffff, #e5e7eb);
+  border: 3px solid #d1d5db;
+}
+
+.doll-top.hoodie {
+  background: linear-gradient(#f9a8d4, #f472b6);
+}
+
+.doll-top.jacket {
+  background: linear-gradient(#c7d2fe, #a5b4fc);
+}
+
+/* ---------- BOTTOM OPTIONS ---------- */
+.doll-bottom.scrubs {
+  background: linear-gradient(#86efac, #4ade80);
+}
+
+.doll-bottom.pants {
+  background: linear-gradient(#fbcfe8, #f472b6);
+}
+
+.doll-bottom.skirt {
+  background: linear-gradient(#ddd6fe, #c4b5fd);
+  border-radius: 22px 22px 32px 32px;
+}
+
+/* ---------- WARDROBE ---------- */
+.wardrobe {
+  margin-top: 1rem;
+}
+
+.shelf-title {
+  font-size: 0.9rem;
+  opacity: 0.7;
+  margin-bottom: 4px;
+}
+
+.options {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+}
+
+.option {
+  padding: 6px 10px;
+  background: #fce7f3;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.option:hover {
+  transform: translateY(-2px);
+}
