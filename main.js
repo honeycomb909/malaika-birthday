@@ -4,7 +4,7 @@ const TARGET_TIMEZONE = "Asia/Karachi";
 const UNLOCK_DATE = {
   year: 2025,
   month: 11,
-  day: 20,
+  day: 25,
   hour: 0,
   minute: 0,
   second: 0
