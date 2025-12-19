@@ -3,8 +3,8 @@ const TARGET_TIMEZONE = "Asia/Karachi";
 // Dec 25, 00:00 Pakistan time
 const UNLOCK_DATE = {
   year: 2025,
-  month: 10,
-  day: 0,
+  month: 11,
+  day: 20,
   hour: 0,
   minute: 0,
   second: 0
